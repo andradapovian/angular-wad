@@ -1,0 +1,35 @@
+
+.events {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.events li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+.events li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.events a {
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 250px;
+}
+
+.events a:hover {
+  color:#607D8B;
+}
+

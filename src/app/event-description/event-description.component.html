@@ -1,0 +1,7 @@
+<div *ngIf="event">
+        <button (click)="goBack()">go back</button>
+        <h2>Details about the event '{{event.name}}' </h2>
+        <div> Location: {{event.location}}</div>
+        <div> Period: {{event.startDate | date: 'mediumDate'}} to {{event.endDate |date: 'mediumDate'}} </div>
+        <div>Description: {{event.details}}</div>
+</div>
