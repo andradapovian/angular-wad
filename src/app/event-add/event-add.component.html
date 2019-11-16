@@ -1,0 +1,40 @@
+<div class="container">
+    
+    <h1>Add Event</h1>
+    <form (ngSubmit)="onSubmit()" #eventAddForm="ngForm">
+        <div>
+        <label for="name">Event Name</label>
+        <input type="text"  id="name"
+            required
+        [(ngModel)]="model.name" name="name"
+        #name="ngModel">
+        </div>
+
+        <div>
+        <label for="location">Location</label>
+        <input type="text" class="form-control" id="location"
+        [(ngModel)]="model.location" name="location">
+        </div>
+
+        <div>
+        <label for="startDate">Start Date</label>
+        <input type="date" class="form-control" id="startDate"
+        [(ngModel)]="model.startDate" name="startDate">
+        </div>
+
+        <div>
+        <label for="endDate">End Date</label>
+        <input type="date" class="form-control" id="endDate"
+        [(ngModel)]="model.endDate" name="endDate">
+        </div>
+
+        <div>
+        <label for="details">Description</label>
+        <input type="text" class="form-control" id="details"
+        [(ngModel)]="model.details" name="details">
+        </div>
+
+    <button type="submit"  [disabled]="!eventAddForm.form.valid">Create Event</button>
+    </form>
+        
+</div>

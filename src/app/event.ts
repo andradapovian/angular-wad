@@ -1,8 +1,12 @@
 export class Event{
     id: number;
-    name: string;
-    location: string;
-    startDate: Date;
-    endDate: Date;
-    details: string;
+    constructor(
+        name: string,
+        location: string,
+        startDate: Date,
+        endDate: Date,
+        details: string,
+    ){
+
+    }
 }

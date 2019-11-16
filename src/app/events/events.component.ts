@@ -24,4 +24,9 @@ export class EventsComponent implements OnInit {
     this.eventService.getEvents()
       .subscribe(events => this.events= events);
   } 
+
+  delete(event:Event):void{
+    this.events =this.events.filter(h => h !== event);
+    this.eventService.deleteEvent(event).subscribe();
+  }
 }

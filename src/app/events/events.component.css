@@ -28,6 +28,13 @@
   display: block;
   width: 250px;
 }
+button.delete {
+  position: relative;
+  left: 194px;
+  top: -32px;
+  background-color: gray !important;
+  color: white;
+}
 
 .events a:hover {
   color:#607D8B;

@@ -1,0 +1,8 @@
+<h1>Wander Lust</h1>
+<nav>
+    <a routerLink="/home">Home</a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/events">Events</a>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">LogOut</a>
+</nav>

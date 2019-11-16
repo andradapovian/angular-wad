@@ -1,7 +1,21 @@
 <div *ngIf="event">
         <button (click)="goBack()">go back</button>
-        <h2>Details about the event '{{event.name}}' </h2>
-        <div> Location: {{event.location}}</div>
+        <button (click)="save()">save</button>
+        <h2>Details about the event</h2>
+
+        <div> <label>Name: 
+                        <input [(ngModel)] = "event.name" placeholder="name"/>
+                </label></div>
+
+        <div> <label>Location: 
+                        <input [(ngModel)] = "event.location" placeholder="location"/>
+                </label></div>
+
         <div> Period: {{event.startDate | date: 'mediumDate'}} to {{event.endDate |date: 'mediumDate'}} </div>
-        <div>Description: {{event.details}}</div>
+
+        <div> <label>Description:
+                        <input [(ngModel)] = "event.details" placeholder="details"/>
+                </label></div>
+      
+        
 </div>

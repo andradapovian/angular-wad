@@ -30,4 +30,9 @@ export class EventDescriptionComponent implements OnInit {
     this.location.back();
   }
 
+  save(): void{
+    this.eventService.updateEvent(this.event)
+    .subscribe(() => this.goBack());
+  }
+
 }

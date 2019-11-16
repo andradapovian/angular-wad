@@ -1,10 +1,16 @@
-<h2>Events</h2>
+<h2>Events</h2> 
+
 
 <ul class="events">
+    <button>
+    <a routerLink="/events/add">Add Event</a>
+    </button>
     <li *ngFor="let event of events">
     <a routerLink="/description/{{event.id}}">
         <span> {{event.name}}</span>
     </a>
+    <button class="delete" title="delete event"
+      (click)="delete(event)">x</button>
     </li>
 </ul>
 
