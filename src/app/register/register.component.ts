@@ -9,7 +9,11 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user:User;
+  model = new User('', '', '', '', '');
+  submitted = false;
+  usernamePattern = '^[*]{5,}$';
+  emailPattern = '^[*]+@[*]+';
+  passwordPattern = '^[*]{8,}$';
 
   constructor(
     private userService: UserService
@@ -18,5 +22,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   
+  onSubmit() {
+    this.submitted = true;
+    this.userService.createUser(this.model).subscribe(value => console.log(value));
+  }
+
+  get diagnostic() {
+    return JSON.stringify(this.model);
+  }
 
 }

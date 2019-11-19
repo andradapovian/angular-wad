@@ -1,16 +1,38 @@
-<h2>Events</h2> 
+
+<div class="w3-light-grey">
 
 
-<ul class="events">
-    <button>
-    <a routerLink="/events/add">Add Event</a>
+
+<div class="w3-light-grey w3-content w3-main" style="margin-left:250px" >
+    <button class="w3-button">
+        <a routerLink="/events/add">Add Event</a>
     </button>
-    <li *ngFor="let event of events">
-    <a routerLink="/description/{{event.id}}">
-        <span> {{event.name}}</span>
-    </a>
-    <button class="delete" title="delete event"
-      (click)="delete(event)">x</button>
-    </li>
-</ul>
+  
 
+
+  <div class="w3-row-padding">
+      
+      <span *ngFor="let event of events">
+          
+          <a routerLink="/description/{{event.id}}">
+              <span><div class="w3-third w3-container w3-margin-bottom " style="width:100%">
+                 
+                  <div class="w3-container w3-white" >
+                    <p><b>{{event.name}}</b></p>
+                    <p>Location: {{event.location}}</p>
+                    <p>{{event.details}}</p>
+                    <p>Start date: {{event.startDate | date: 'mediumDate'}}</p>
+                    <p>End date: {{event.endDate | date: 'mediumDate'}}</p>
+                  </div>
+                
+              
+              </div>
+            </span>
+          </a>
+        </span>
+
+    
+    
+  </div>
+  
+</div>

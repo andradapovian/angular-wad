@@ -12,12 +12,12 @@ import { EventAddComponent } from './event-add/event-add.component';
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'events', component: EventsComponent, canActivate:[AuthGaurdService] },
-  {path: 'events/add', component: EventAddComponent, canActivate:[AuthGaurdService]},
+  {path: 'events', component: EventsComponent },
+  {path: 'events/add', component: EventAddComponent},
   {path: 'description/:id', component: EventDescriptionComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  { path: 'logout', component: LogoutComponent, canActivate:[AuthGaurdService]  },
+  { path: 'logout', component: LogoutComponent /*,canActivate:[AuthGaurdService]*/  },
 ];
 
 @NgModule({

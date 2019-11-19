@@ -1,28 +1,44 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from '../../node_modules/rxjs';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor() { }
+    response: Response;
 
-  authenticate(username, password) {
-    if (username === "javainuse" && password === "password") {
-      sessionStorage.setItem('username', username)
-      return true;
-    } else {
-      return false;
-    }
+    headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    })
+  
+
+  baseUrl = 'http://localhost:8080/';
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  getToken(): string {
+    console.log(localStorage.getItem('token'))
+    return localStorage.getItem('token');
   }
 
-  isUserLoggedIn() {
-    let user = sessionStorage.getItem('username')
-    console.log(!(user === null))
-    return !(user === null)
+  login(username: string, password: string): Observable<User> {
+    let loginUrl = this.baseUrl + 'login'
+    this.headers = this.headers.set('Authorization', 'Basic ' + btoa(username + ':' + password));
+    localStorage.setItem('Authorization', 'Basic ' + btoa(username + ':' + password))
+    return this.http.post<User>(loginUrl, {}, {headers: this.headers});
   }
 
-  logOut() {
-    sessionStorage.removeItem('username')
+  logout(): Observable<any> {
+    let url = `${this.baseUrl}/logout`;
+    localStorage.removeItem('user');
+    localStorage.removeItem('Authorization');
+    return this.http.get(url);
   }
+
 }

@@ -1,8 +1,16 @@
-<h1>Wander Lust</h1>
-<nav>
-    <a routerLink="/home">Home</a>
-    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/events">Events</a>
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
-    <a *ngIf="loginService.isUserLoggedIn()" routerLink="/logout">LogOut</a>
-</nav>
+
+
+<div class="w3-display-container" >
+        <img src="assets/img/Panorama_tatier.jpg" style="width:100%">
+        <div class="w3-display-bottomleft w3-container w3-amber"
+         style="bottom:10%;opacity:0.7;width:70%">
+        <h1>Mountain Lovers</h1>
+       </div>
+      </div>
+<ul>
+  <li><a routerLink="/home">Home</a></li>
+  <li><a routerLink="/events">Events</a></li>
+  <li style="float:right"><a  routerLink="/login">Login</a></li>
+  <li style="float:right"><a routerLink="/register">Register</a></li>
+  <li style="float:right"><a routerLink="/logout">LogOut</a></li>
+</ul>

@@ -15,9 +15,7 @@ export class EventAddComponent implements OnInit {
 
 
   constructor( private eventService: EventService,
-    private location: Location) { }
-
-  
+               private location: Location) { }
 
   ngOnInit() {}
 

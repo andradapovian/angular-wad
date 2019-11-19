@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -9,23 +10,48 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  username = 'javainuse'
-  password = ''
-  invalidLogin = false
+  loginForm: FormGroup;
+  submitted = false;
+  returnUrl: string;
 
-  constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+
+    this.authenticationService.logout();
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)
-    ) {
-      this.router.navigate([''])
-      this.invalidLogin = false
-    } else
-      this.invalidLogin = true
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .subscribe(
+        user => {
+          localStorage.setItem("user", JSON.stringify(user));
+          console.log(localStorage.getItem("user"));
+          console.log('User is logged in');
+        }
+      );
+
   }
 
 }

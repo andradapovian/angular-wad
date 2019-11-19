@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule }   from '@angular/forms';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { LogoutComponent } from './logout/logout.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventAddComponent } from './event-add/event-add.component';
+import { MatToolbarModule} from '@angular/material';
+import { EventComingUpComponent } from './event-coming-up/event-coming-up.component';
+
 
 @NgModule({
   declarations: [
@@ -25,14 +29,17 @@ import { EventAddComponent } from './event-add/event-add.component';
     RegisterComponent,
     LogoutComponent,
     HeaderComponent,
-    EventAddComponent
+    EventAddComponent,
+    EventComingUpComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

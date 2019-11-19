@@ -35,4 +35,8 @@ export class EventDescriptionComponent implements OnInit {
     .subscribe(() => this.goBack());
   }
 
+  delete():void{
+   
+    this.eventService.deleteEvent(this.event).subscribe(() => this.goBack());
+  }
 }

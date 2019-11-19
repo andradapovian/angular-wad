@@ -1,6 +1,10 @@
 <div *ngIf="event">
         <button (click)="goBack()">go back</button>
         <button (click)="save()">save</button>
+        
+        <button class="delete" title="delete event"
+      (click)="delete(event)"> Delete Event </button>
+        
         <h2>Details about the event</h2>
 
         <div> <label>Name: 
