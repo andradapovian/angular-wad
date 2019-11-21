@@ -9,10 +9,19 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private loginService:AuthenticationService) { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit() {
     
+  }
+
+  loggedAdmin():boolean{
+    return this.authService.loggedInAdmin();
+  }
+
+  logged():boolean{
+
+    return this.authService.loggedIn();
   }
 
 }

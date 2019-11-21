@@ -20,8 +20,31 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: User): Observable<User> {
-    let registrationUrl = this.baseUrl;
+    let registrationUrl = this.baseUrl +`/registration`;
     console.log(registrationUrl);
     return this.http.post<User>(registrationUrl, user, httpOptions);
+  }
+  
+  getUserAtId(userId: number): Observable<User> {
+    let userIdUrl = this.baseUrl + `${userId}`;
+    httpOptions.headers = httpOptions.headers.set('Authorization', localStorage.getItem('Authorization'));
+    return this.http.get<User>(userIdUrl, httpOptions);
+  }
+
+  updateUser(user: User): Observable<User> {
+    let userId = +user.id;
+    let userIdUrl = this.baseUrl + `${userId}`;
+    httpOptions.headers = httpOptions.headers.set('Authorization', localStorage.getItem('Authorization'));
+
+    return this.http.put<User>(userIdUrl, user, httpOptions);
+  }
+
+  deleteUser(user: User | number ): Observable<User>{
+    const id = typeof user === 'number' ? event : user.id;
+
+    let userIdUrl = this.baseUrl + `${id}`;
+    httpOptions.headers = httpOptions.headers.set('Authorization', localStorage.getItem('Authorization'));
+    return this.http.delete<User> (userIdUrl, httpOptions);
+
   }
 }

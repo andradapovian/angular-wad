@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EventAddComponent } from './event-add/event-add.component';
 import { MatToolbarModule} from '@angular/material';
 import { EventComingUpComponent } from './event-coming-up/event-coming-up.component';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { EventComingUpComponent } from './event-coming-up/event-coming-up.compon
     MatToolbarModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

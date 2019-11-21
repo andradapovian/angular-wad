@@ -3,6 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from '../../node_modules/rxjs';
 import { User } from './user';
 
+
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +31,16 @@ export class AuthenticationService {
     private http: HttpClient
   ) { }
 
-  getToken(): string {
-    console.log(localStorage.getItem('token'))
-    return localStorage.getItem('token');
+  
+
+  loggedIn(){
+    
+    return !!localStorage.getItem('user')
+  }
+
+  loggedInAdmin(){
+    console.log('user')
+    return !!localStorage.getItem('user.role')
   }
 
   login(username: string, password: string): Observable<User> {
@@ -35,10 +51,12 @@ export class AuthenticationService {
   }
 
   logout(): Observable<any> {
-    let url = `${this.baseUrl}/logout`;
-    localStorage.removeItem('user');
+    let url =  this.baseUrl + 'logout';
+     httpOptions.headers = httpOptions.headers.set('Authorization', localStorage.getItem('Authorization'));
+     localStorage.removeItem('user');
     localStorage.removeItem('Authorization');
-    return this.http.get(url);
+    
+    return this.http.get(url, httpOptions);
   }
 
 }

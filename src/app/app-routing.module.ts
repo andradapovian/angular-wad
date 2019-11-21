@@ -6,13 +6,13 @@ import { EventDescriptionComponent } from './event-description/event-description
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
-import { AuthGaurdService } from './auth-gaurd.service';
 import { EventAddComponent } from './event-add/event-add.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo:'/home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'events', component: EventsComponent },
+  {path: 'events', component: EventsComponent, canActivate:[AuthGuard] },
   {path: 'events/add', component: EventAddComponent},
   {path: 'description/:id', component: EventDescriptionComponent},
   {path: 'login', component: LoginComponent},
