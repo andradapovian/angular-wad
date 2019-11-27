@@ -16,11 +16,11 @@ export class HeaderComponent implements OnInit {
   }
 
   loggedAdmin():boolean{
-    return this.authService.loggedInAdmin();
+    return this.authService.loggedIn();
   }
 
   logged():boolean{
-
+    
     return this.authService.loggedIn();
   }
 

@@ -5,6 +5,7 @@ import { User } from './user';
 
 
 
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -34,13 +35,17 @@ export class AuthenticationService {
   
 
   loggedIn(){
-    
-    return !!localStorage.getItem('user')
+    let user;
+    user = JSON.parse(localStorage.getItem('user.name'));
+    console.log(user);
+    return !!localStorage.getItem('user')    
   }
 
   loggedInAdmin(){
-    console.log('user')
-    return !!localStorage.getItem('user.role')
+    
+    console.log(JSON.parse(localStorage.getItem('user.name')));
+    return !!localStorage.getItem('user')    
+    
   }
 
   login(username: string, password: string): Observable<User> {

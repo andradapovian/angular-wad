@@ -1,5 +1,29 @@
 button.delete {
+    width: auto;
+    padding: 10px 18px;
     background-color: gray !important;
     color: white;
+    margin: 7px 20px;
   }
   
+  button.cancel {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    margin: 7px 20px;
+  }
+  button.save {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #0ed81f;
+    margin: 7px 20px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+   
+  }

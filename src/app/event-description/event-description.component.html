@@ -1,8 +1,8 @@
 <div *ngIf="event">
-        <button (click)="goBack()">go back</button>
-        <button (click)="save()">save</button>
+        <button class= "delete" (click)="goBack()">go back</button>
+        <button class= "save" (click)="save()">save</button>
         
-        <button class="delete" title="delete event"
+        <button  class="cancel" title="delete event"
       (click)="delete(event)"> Delete Event </button>
         
         <h2>Details about the event</h2>
